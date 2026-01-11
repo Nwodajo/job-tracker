@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const [company, setCompany] = useState("");
+const [role, setRole] = useState("");
+const [jobs, setJobs] = useState([]);
+
+const addJob = () => {
+if (!company || !role) return;
+
+setJobs([...jobs, { company, role }]);
+setCompany("");
+setRole("");
+};
+
+return (
+<div className="container">
+<h1>Job Application Tracker</h1>
+
+<input
+type="text"
+placeholder="Company name"
+value={company}
+onChange={(e) => setCompany(e.target.value)}
+/>
+
+<input
+type="text"
+placeholder="Job role"
+value={role}
+onChange={(e) => setRole(e.target.value)}
+/>
+
+<button onClick={addJob}>Add Job</button>
+
+<ul>
+{jobs.map((job, index) => (
+<li key={index}>
+{job.company} — {job.role}
+</li>
+))}
+</ul>
+</div>
+);
 }
 
 export default App;
