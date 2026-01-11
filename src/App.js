@@ -1,48 +1,63 @@
 import React, { useState } from "react";
 import "./App.css";
 
-function App() {
+export default function App() {
 const [company, setCompany] = useState("");
 const [role, setRole] = useState("");
 const [jobs, setJobs] = useState([]);
 
-const addJob = () => {
-if (!company || !role) return;
+function handleAddJob(e) {
+e.preventDefault();
+if (!company.trim() || !role.trim()) return;
 
-setJobs([...jobs, { company, role }]);
-setCompany("");
-setRole("");
+const newJob = {
+id: Date.now(),
+company: company.trim(),
+role: role.trim(),
 };
 
+setJobs((prev) => [newJob, ...prev]);
+setCompany("");
+setRole("");
+}
+
+function handleDeleteJob(id) {
+setJobs((prev) => prev.filter((job) => job.id !== id));
+}
+
 return (
-<div className="container">
+<div style={{ padding: 20 }}>
 <h1>Job Application Tracker</h1>
 
+<form onSubmit={handleAddJob} style={{ marginBottom: 12 }}>
 <input
-type="text"
 placeholder="Company name"
 value={company}
 onChange={(e) => setCompany(e.target.value)}
+style={{ display: "block", marginBottom: 8, width: 300 }}
 />
-
 <input
-type="text"
 placeholder="Job role"
 value={role}
 onChange={(e) => setRole(e.target.value)}
+style={{ display: "block", marginBottom: 8, width: 300 }}
 />
+<button type="submit">Add Job</button>
+</form>
 
-<button onClick={addJob}>Add Job</button>
-
-<ul>
-{jobs.map((job, index) => (
-<li key={index}>
-{job.company} — {job.role}
+<ul style={{ paddingLeft: 18 }}>
+{jobs.map((job) => (
+<li key={job.id} style={{ marginBottom: 8 }}>
+<strong>{job.company}</strong> — {job.role}{" "}
+<button
+onClick={() => handleDeleteJob(job.id)}
+style={{ marginLeft: 10 }}
+>
+Delete Job
+</button>
 </li>
 ))}
 </ul>
 </div>
 );
 }
-
-export default App;
