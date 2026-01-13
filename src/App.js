@@ -26,38 +26,66 @@ setJobs((prev) => prev.filter((job) => job.id !== id));
 }
 
 return (
-<div style={{ padding: 20 }}>
-<h1>Job Application Tracker</h1>
+<div className="page">
+<div className="container">
+<h1 className="title">Job Application Tracker</h1>
 
-<form onSubmit={handleAddJob} style={{ marginBottom: 12 }}>
+<div className="card">
+<form className="form" onSubmit={handleAddJob}>
+<label className="label">
+Company
 <input
+className="input"
 placeholder="Company name"
 value={company}
 onChange={(e) => setCompany(e.target.value)}
-style={{ display: "block", marginBottom: 8, width: 300 }}
 />
+</label>
+
+<label className="label">
+Role
 <input
+className="input"
 placeholder="Job role"
 value={role}
 onChange={(e) => setRole(e.target.value)}
-style={{ display: "block", marginBottom: 8, width: 300 }}
 />
-<button type="submit">Add Job</button>
-</form>
+</label>
 
-<ul style={{ paddingLeft: 18 }}>
+<button className="addBtn" type="submit">
+Add Job
+</button>
+</form>
+</div>
+
+<div className="card">
+<h2 className="subTitle">Applications</h2>
+
+{jobs.length === 0 ? (
+<p className="empty">No jobs yet. Add your first one above.</p>
+) : (
+<ul className="list">
 {jobs.map((job) => (
-<li key={job.id} style={{ marginBottom: 8 }}>
-<strong>{job.company}</strong> — {job.role}{" "}
+<li key={job.id} className="jobItem">
+<div className="jobText">
+<span className="company">{job.company}</span>
+<span className="dash">—</span>
+<span className="role">{job.role}</span>
+</div>
+
 <button
+className="deleteBtn"
 onClick={() => handleDeleteJob(job.id)}
-style={{ marginLeft: 10 }}
+type="button"
 >
-Delete Job
+Delete
 </button>
 </li>
 ))}
 </ul>
+)}
+</div>
+</div>
 </div>
 );
 }

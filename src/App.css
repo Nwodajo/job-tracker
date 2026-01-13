@@ -1,38 +1,138 @@
-.App {
-  text-align: center;
+* {
+box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+margin: 0;
+font-family: Arial, Helvetica, sans-serif;
+background: #f4f6f8;
+color: #111827;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.page {
+padding: 28px 16px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.container {
+max-width: 720px;
+margin: 0 auto;
 }
 
-.App-link {
-  color: #61dafb;
+.title {
+text-align: center;
+margin: 0 0 18px;
+font-size: 28px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card {
+background: white;
+border: 1px solid #e5e7eb;
+border-radius: 12px;
+padding: 16px;
+box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+margin-bottom: 16px;
+}
+
+.form {
+display: grid;
+gap: 12px;
+}
+
+.label {
+display: grid;
+gap: 6px;
+font-size: 14px;
+color: #374151;
+}
+
+.input {
+width: 100%;
+padding: 10px 12px;
+border-radius: 10px;
+border: 1px solid #d1d5db;
+font-size: 14px;
+outline: none;
+}
+
+.input:focus {
+border-color: #2563eb;
+box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.addBtn {
+padding: 10px 12px;
+border: none;
+border-radius: 10px;
+font-size: 14px;
+cursor: pointer;
+background: #2563eb;
+color: white;
+}
+
+.addBtn:hover {
+background: #1d4ed8;
+}
+
+.subTitle {
+margin: 0 0 10px;
+font-size: 16px;
+color: #111827;
+}
+
+.empty {
+margin: 0;
+color: #6b7280;
+font-size: 14px;
+}
+
+.list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+.jobItem {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 12px;
+padding: 12px 0;
+border-bottom: 1px solid #f1f5f9;
+}
+
+.jobItem:last-child {
+border-bottom: none;
+}
+
+.jobText {
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
+font-size: 14px;
+}
+
+.company {
+font-weight: 700;
+}
+
+.dash {
+color: #9ca3af;
+}
+
+.role {
+color: #374151;
+}
+
+.deleteBtn {
+padding: 8px 10px;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+background: #ef4444;
+color: white;
+font-size: 13px;
+}
+
+.deleteBtn:hover {
+background: #dc2626;
 }
